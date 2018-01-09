@@ -45,6 +45,31 @@ class WorkerController < ApplicationController
         end
         render json: ret
 
+      when 'edit'
+        id = params[:id]
+        fio = params[:fio]
+        email = params[:email]
+        phone = params[:phone]
+        info = params[:info]
+        city = params[:city]
+        image = params[:image]
+
+        @user_edit = Worker.find(id)
+        @user_edit.update(fio: fio, email: email, phone: phone, info: info, photo_url: image)
+
+        @city_edit = City.find_by(workers_id: id)
+        @city_edit.update(city_name: city)
+
+        ret[:code] = 1
+        ret[:fio] = @user_edit.fio
+        ret[:email] = @user_edit.email
+        ret[:phone] = @user_edit.phone
+        ret[:info] = @user_edit.info
+        ret[:city] = @city_edit.city_name
+        ret[:image] = @user_edit.photo_url
+        ret[:id] = @user_edit.id
+        render json: ret
+
         else
           render json: ret
     end
