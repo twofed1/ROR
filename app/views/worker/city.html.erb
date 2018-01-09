@@ -1,17 +1,23 @@
+<h1>Все сотрудники в городе <%= params[:curr] %></h1>
+
 <input id="search" placeholder="<%= t("search") %>">
 
 <div class="workers">
-  <% @workers_list.each do |workers| %>
+  <% @workers_city_list.each do |workers| %>
     <div class="worker">
-      <h3><%= workers.workers_id %></h3>
-      <small><%= workers.city_name %></small>
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="<%= image_url('workers/' + workers.photo_url.to_s) %>">
+        </div>
+        <div class="col-sm-6">
+          <h3><%= workers.fio %></h3>
+          <small><%= workers.email %></small>
+          <small><%= workers.phone %></small>
+          <%= link_to t('show'), worker_path(workers) %>
+          <br>
+          <%= link_to t('delete'), worker_path(workers), method: :delete %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
-
-
-<% @new.each do |city| %>
-  <div class="worker">
-    <h3><%= city.fio %></h3>
-  </div>
-<% end %>

@@ -1,21 +1,20 @@
 class WorkerController < ApplicationController
   def index
-    @workers_list = Worker.all
-  end
-
-  def edit
-    @new = Worker.select("*").joins(:City)
-    @workers_list = City.where (["city_name LIKE ?", "%#{params[:curr]}%"])
+    @workers_list = Worker.joins("INNER JOIN cities ON cities.workers_id = workers.id").select("cities.*,workers.*").all
   end
 
   def destroy
-    @worker = Worker.find(params[:id])
+    @worker = Worker.joins("INNER JOIN cities ON cities.workers_id = workers.id").select("cities.*,workers.*").find(params[:id])
     @worker.destroy
     redirect_to :worker_index
   end
 
   def show
-    @worker = Worker.find(params[:id])
+    @worker = Worker.joins("INNER JOIN cities ON cities.workers_id = workers.id").select("cities.*,workers.*").find(params[:id])
+  end
+
+  def city
+    @workers_city_list = Worker.joins("INNER JOIN cities ON cities.workers_id = workers.id").select("cities.*,workers.*").where(cities: {city_name: params[:curr]})
   end
 
   def ajax
@@ -28,14 +27,21 @@ class WorkerController < ApplicationController
         email = params[:email]
         phone = params[:phone]
         info = params[:info]
+        city = params[:city]
+        image = params[:image]
 
-        @user_new = Worker.new(fio: fio, email: email, phone: phone, info: info)
+        @user_new = Worker.new(fio: fio, email: email, phone: phone, info: info, photo_url: image)
         if @user_new.save
-          ret[:code] = 1
-          ret[:fio] = @user_new.fio
-          ret[:email] = @user_new.email
-          ret[:phone] = @user_new.phone
-          ret[:info] = @user_new.info
+          @city_new = City.new(workers_id: @user_new.id, city_name: city)
+            if @city_new.save
+              ret[:code] = 1
+              ret[:fio] = @user_new.fio
+              ret[:email] = @user_new.email
+              ret[:phone] = @user_new.phone
+              ret[:info] = @user_new.info
+              ret[:city] = @city_new.city_name
+              ret[:image] = @user_new.photo_url
+            end
         end
         render json: ret
 

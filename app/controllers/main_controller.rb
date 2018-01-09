@@ -1,5 +1,6 @@
 class MainController < ApplicationController
   def index
+    %# @workers_list = City.delete([6, 7, 9, 10]) #
   end
 
   def lang
@@ -8,7 +9,7 @@ class MainController < ApplicationController
   end
 
   def add_city
-    @city_new = City.create(workers_id: 1, city_name: "Санкт-Петербург")
+    @city_new = City.create(workers_id: 1, city_name: " ")
     if @city_new.save
       redirect_to :main_index
     end

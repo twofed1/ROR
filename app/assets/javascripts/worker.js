@@ -18,7 +18,7 @@ jQuery(function ($) {
         $.ajax({
             type: 'POST',
             url: '/worker/ajax/',
-            data: {type: "add", fio: $("#fio").val(), email: $("#email").val(), phone: $("#phone").val(), info: $("#info").val()},
+            data: {type: "add", fio: $("#fio").val(), email: $("#email").val(), phone: $("#phone").val(), info: $("#info").val(), city: $("#city").val(), image: $("#image").val() },
             success: function (data) {
                 $(".workers").append("<div class=\"worker\">\n" +
                     "          <div class=\"row\">\n" +
@@ -29,6 +29,7 @@ jQuery(function ($) {
                     "              <h3>" + data.fio + "</h3>\n" +
                     "              <small>" + data.email + "</small>\n" +
                     "              <small>" + data.phone + "</small>\n" +
+                    "              <small>" + data.city + "</small>\n" +
                     "            </div>\n" +
                     "          </div>\n" +
                     "        </div>");

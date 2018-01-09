@@ -13,9 +13,12 @@
               <h3><%= workers.fio %></h3>
               <small><%= workers.email %></small>
               <small><%= workers.phone %></small>
+              <small><%= workers.city_name %></small>
               <%= link_to t('show'), worker_path(workers) %>
               <br>
-              <%= link_to t('delete'), worker_path(workers), method: :delete %>
+              <%= link_to t('delete'), worker_path(workers), method: :delete, data: {:confirm => "You sure?"} %>
+              <br>
+              <a href class="change_user">Change</a>
             </div>
           </div>
         </div>
@@ -31,8 +34,11 @@
     <input id="fio" name="fio" placeholder="ФИО">
     <input id="email" name="email" placeholder="Электронный адрес">
     <input id="phone" name="phone" placeholder="Телефон">
+    <input id="city" name="city" placeholder="Город">
+    <input id="image" name="image" placeholder="Имя файла фотографии">
     <textarea id="info" name="info" placeholder="Описание"></textarea>
     <button type="button" class="btn btn-success" id="add_new_worker">Добавить</button>
+    <button type="button" class="btn btn-success" id="edit_worker" style="display: none;">Изменить</button>
 
   </div>
 
