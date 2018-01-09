@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-sm-8">
+    <input id="search" placeholder="<%= t("search") %>">
+
+    <div class="workers">
+      <% @workers_list.each do |workers| %>
+        <div class="worker">
+          <div class="row">
+            <div class="col-sm-6">
+              <img src="<%= image_url('workers/' + workers.photo_url.to_s) %>">
+            </div>
+            <div class="col-sm-6">
+              <h3><%= workers.fio %></h3>
+              <small><%= workers.email %></small>
+              <small><%= workers.phone %></small>
+              <%= link_to t('show'), worker_path(workers) %>
+              <br>
+              <%= link_to t('delete'), worker_path(workers), method: :delete %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="col-sm-4 add_new">
+    <%= t('add_workers') %>
+    <br>
+
+    <input id="fio" name="fio" placeholder="ФИО">
+    <input id="email" name="email" placeholder="Электронный адрес">
+    <input id="phone" name="phone" placeholder="Телефон">
+    <textarea id="info" name="info" placeholder="Описание"></textarea>
+    <button type="button" class="btn btn-success" id="add_new_worker">Добавить</button>
+
+  </div>
+
+</div>
+

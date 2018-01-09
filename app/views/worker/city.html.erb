@@ -1,0 +1,17 @@
+<input id="search" placeholder="<%= t("search") %>">
+
+<div class="workers">
+  <% @workers_list.each do |workers| %>
+    <div class="worker">
+      <h3><%= workers.workers_id %></h3>
+      <small><%= workers.city_name %></small>
+    </div>
+  <% end %>
+</div>
+
+
+<% @new.each do |city| %>
+  <div class="worker">
+    <h3><%= city.fio %></h3>
+  </div>
+<% end %>

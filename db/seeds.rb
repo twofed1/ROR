@@ -1,0 +1,1 @@
+Worker.create!(fio: "Vnukov P.A.", email: "vnukov95@gmail.com", phone: "+79052556048", photo_url: "logo.png", info: "admin")

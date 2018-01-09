@@ -1,0 +1,21 @@
+<div class="workers">
+  <div class="worker">
+    <h1>Информация о сотруднике</h1>
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="<%= image_url('workers/' + @worker.photo_url.to_s) %>">
+      </div>
+      <div class="col-sm-4">
+        <h3><%= @worker.fio %></h3>
+        <small><%= @worker.email %></small>
+        <small><%= @worker.phone %></small>
+        <small><%= @worker.info %></small>
+      </div>
+      <div class="col-sm-4">
+        <%= link_to 'Назад', worker_path %>
+        <br>
+        <%= link_to t('delete'), worker_path, method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>

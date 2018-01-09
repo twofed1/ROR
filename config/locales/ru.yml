@@ -1,0 +1,36 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  brand: "Список сотрудников"
+  home: "Главная"
+  workers: "Сотрудники"
+  search: "Поиск сотрудников"
+  by: "Разработка"
+  logo_text: "Система поиска сотрудников"
+  promo_text: "Если вы работаете в крупной компани, вы без труда можете забыть имена или телефоны ваших сотрудников. Наш продукт поможет вам справиться с этой проблемой."
+  spb_button: "Поиск в Санкт-Петербурге"
+  other_buttons: "Поиск во всех городах"
+  all_workers: "Все сотрудники"
+  add_workers: "Добавить новых сотрудников"
+  sel_city: "Выбрать город"
+  show: "Показать всю информацию"
+  delete: "Удалить сотрудника"
